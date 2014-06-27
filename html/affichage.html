@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Affichage des données</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/index.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.js"> </script>
+     <script type="text/javascript" src="../js/bootstrap.min.js"> </script>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+  
+
+  
+	<div class="container">
+	
+		
+		<div type="button" class="btn btn-primary " id="recevoir-info" >Recevoir info</div>
+		<div type="button" class="btn btn-primary" id="recevoir-info-archive">Recevoir Archivés</div>
+		<div type="button" class="btn btn-warning col-md-offset-6" id="" data-toggle="modal" data-target="#myModal">informations relatives à cette page</div>
+		<div class="row">
+		</br>
+			<table class="table table-bordered" id="display-results">
+			
+			</table>
+			
+
+		</div><!-- row -->
+	</div> <!-- /container -->
+	
+	<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Informations :</h4>
+      </div>
+      <div class="modal-body">
+       <strong class="text-info">Correspondance des notes :</strong>
+        <ul> 
+			<li> <strong>1</strong> : L'entreprise est une SAS, SARL, ou les besoins en fonds propres sont insuffisants.</li> 
+			<li> <strong>2</strong> : L'entreprise est inférieure à 3 ans, son CA est inferieur à 500K, son nombre d'employés inférieur à 5.</li> 
+			<li> <strong>3</strong> : Pareil que 2, mais entreprise à potentiel R&D.</li>
+			<li> <strong>10</strong> : L'entreprise a plus de 3 ans, plus de 5 employés, c'est une SA, tous les chiffres sont en progression.</li>
+			<li> <strong>5</strong> : Tous les autres cas.</li>
+		</ul> 
+		<strong class="text-info">Correspondance des boutons :</strong>
+		<ul>
+		 	<li><span class="glyphicon glyphicon-remove-sign text-danger"></span> Pour archiver la fiche. Elle sera visible dans "recevoir archivés".</li>
+		 	<li><span class="glyphicon glyphicon-info-sign text-success"></span> Pour afficher les informations supplémentaires recueillies.</li>
+		 </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div><!-- modal -->
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="../js/affichage.js"> </script>
+        
+       
+
+  </body>
+</html>

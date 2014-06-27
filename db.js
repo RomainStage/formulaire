@@ -165,8 +165,8 @@ MongoClient.connect('mongodb://'+data.login+':'+data.pwd+'@kahana.mongohq.com:10
 		res.end(JSON.stringify({message: "ko"}));
 		db.close();
 	}else{
-		res.writeHead(200, {'Content-Length': 2,'Content-Type': 'text/plain' });
-		res.writeHead(200, {"Content -Type": "application/json", "Set-Cookie" : 'cookieName='+cookieValue+';expires='+cookieExpire});
+
+		res.writeHead(200, {"Content-Type": "'text/plain'", "Set-Cookie" : 'cookieName='+cookieValue+';expires='+cookieExpire});
 		res.end(JSON.stringify({message: "ok"}));
 		db.close();
 	}

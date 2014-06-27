@@ -41,7 +41,7 @@ rest_method:
 		} else if (this.req.method == "POST") {
 			this.post_method();
 		} else {
-			this.resp.writeHead(501, {"Content -Type": "application/json"});
+			this.resp.writeHead(501, {"Content-Type": "application/json"});
 			this.resp.write(JSON.stringify({message: "Not Implemented"}));
 			this.resp.end();
 			return;
@@ -132,7 +132,7 @@ cb_cookie:
 
 /*++++++++++++++++++++++++++++++GET ID JS++++++++++++++++++++++++++++*/			
 			if (b.ac == 'get-id'){
-				this.resp.writeHead(200, {"Content -Type": "application/json"});
+				this.resp.writeHead(200, {"Content-Type": "application/json"});
 
 				db.get_id(this.req.headers.cookie, this.resp);
 				return;
@@ -142,21 +142,21 @@ cb_cookie:
 
 			/*+++++++++++++++++++++++++++++++++++++++++on recup les id+++++++++++++++++++++++++*/
 			else if(b.ac == "get-content2"){
-				this.resp.writeHead(200, {"Content -Type": "application/json"});
+				this.resp.writeHead(200, {"Content-Type": "application/json"});
 				db.get_id_admin(this.resp);
 				//console.log("router");
 				return;
 			}
 			/*++++++++++++++++++++++++++++set un compte en admin ou en normal ou en suspend+++++++++++++++++++++++++*/
 			else if (b.ac == "set-account-admin"){
-				this.resp.writeHead(200, {"Content -Type": "application/json"});
+				this.resp.writeHead(200, {"Content-Type": "application/json"});
 				db.set_account_admin(b.id, b.statue, this.resp);
 				return;
 			}
 /*================pour supprimer un cookie ++++++++++++++++++++++++++++++++++++++++*/
 			else if (b.ac == "delete-cookie"){
 			
-				this.resp.writeHead(200, {"Content -Type": "application/json"});
+				this.resp.writeHead(200, {"Content-Type": "application/json"});
 				db.delete_cookie(this.req.headers.cookie, this.resp);
 				return;
 			}
@@ -195,7 +195,7 @@ cb_cookie:
 		}
 				
 		util.log("INFO - Action not found : " + b.ac);
-		//this.resp.writeHead(501, {"Content -Type": "application/json"});
+		//this.resp.writeHead(501, {"Content-Type": "application/json"});
 		this.resp.end(JSON.stringify({message: "nocookie"}));
 		
 	},
@@ -230,7 +230,7 @@ load_file:
 			} });
 			} else {
 				util.log("INFO - File requested not found : " + _this.path);
-				_this.resp.writeHead(404, {"Content -Type":"text/html"});
+				_this.resp.writeHead(404, {"Content-Type":"text/html"});
 				_this.resp.end(); 
 			}
 		});
@@ -239,7 +239,7 @@ load_file:
 file_processing:
 	function () {
 		if (this.filetype == "htm") {
-			this.resp.writeHead(200, {"Content -Type": "text/html"});
+			this.resp.writeHead(200, {"Content-Type": "text/html"});
 		} else if (this.image_file.indexOf(this.filetype) >= 0) {
 			this.resp.writeHead(200, { "Content-Type" : "image/" + this.filetype });
 		} else {

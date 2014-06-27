@@ -153,7 +153,7 @@ MongoClient.connect('mongodb://'+data.login+':'+data.pwd+'@kahana.mongohq.com:10
     var collection = db.collection('cookie');    
 	var cookieValue =  data.login.substring(0,3) + Math.floor(Math.random() * 100000000);//on nomme le cookie
 	var cookieExpire;
-	console.log("aaaaaaa"+data.rememberme);
+	
 	if (data.rememberme == true){
 	cookieExpire = new Date(new Date().getTime()+604800000).toUTCString();//si on coche le bouton rememberme, expire au bout de un mois
 	}else{
@@ -165,6 +165,7 @@ MongoClient.connect('mongodb://'+data.login+':'+data.pwd+'@kahana.mongohq.com:10
 		res.end(JSON.stringify({message: "ko"}));
 		db.close();
 	}else{
+		res.writeHead(200, {'Content-Length': 2,'Content-Type': 'text/plain' });
 		res.writeHead(200, {"Content -Type": "application/json", "Set-Cookie" : 'cookieName='+cookieValue+';expires='+cookieExpire});
 		res.end(JSON.stringify({message: "ok"}));
 		db.close();

@@ -193,7 +193,7 @@ parametre : chiffre affaire du bilan n-1 et n-2
 2 -> rempli mais pas en progression
 3 -> rempli et en progression
 */
-var reg = new RegExp('^[0-9]+$');
+var reg = new RegExp('^(-|)\[0-9]+$');
 if (reg.test(nombre1) && reg.test(nombre2)){
 	document.getElementById("bilan-ca-control").innerHTML="";
 	nombre1 = parseInt(nombre1);
@@ -204,7 +204,7 @@ if (reg.test(nombre1) && reg.test(nombre2)){
 		return 2;
 	}
 }else{
-	document.getElementById("bilan-ca-control").innerHTML="Entrer des chiffres valides SVP, mettre 0 si vide";
+	document.getElementById("bilan-ca-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
 	self.location.href="#bilan-ca-control";
 	return 0;
 }
@@ -217,7 +217,7 @@ parametre : resultat net du bilan n-1 et n-2
 2 -> rempli mais pas en progression
 3 -> rempli et en progression
 */
-var reg = new RegExp('^[0-9]+$');
+var reg = new RegExp('^(-|)\[0-9]+$');
 if (reg.test(nombre1) && reg.test(nombre2)){
 	document.getElementById("bilan-rn-control").innerHTML="";
 	nombre1 = parseInt(nombre1);
@@ -228,7 +228,7 @@ if (reg.test(nombre1) && reg.test(nombre2)){
 		return 2;
 	}
 }else{
-	document.getElementById("bilan-rn-control").innerHTML="Entrer des chiffres valides SVP, mettre 0 si vide";
+	document.getElementById("bilan-rn-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
 	self.location.href="#bilan-rn-control";
 	return 0;
 }
@@ -243,7 +243,7 @@ retourne:
 	2 ->somme < 37k
 	3 ->somme >= 37K
 */
-	var reg = new RegExp('^[0-9]+$');
+	var reg = new RegExp('^(-|)\[0-9]+$');
 	
 	if (reg.test(cs) && reg.test(rn) && reg.test(rn1) && reg.test(rn2)){
 		if (parseInt(cs)+parseInt(rn)+parseInt(rn1)+parseInt(rn2) < 37000){
@@ -254,7 +254,7 @@ retourne:
 			return 3;
 		}
 	}else{
-		document.getElementById("bilan-cs-control").innerHTML = "Entrer des chiffres valides ou 0 si vide";
+		document.getElementById("bilan-cs-control").innerHTML = "Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
 		self.location.href="#bilan-cs-control";
 		return 0;
 	}
@@ -330,7 +330,7 @@ parametre : chiffre affaire pour objectif n et n+1 n+2
 2 -> rempli mais pas en progression
 3 -> rempli et en progression
 */
-var reg = new RegExp('^[0-9]+$');
+var reg = new RegExp('^(-|)\[0-9]+$');
 if (reg.test(nombre1) && reg.test(nombre2) && reg.test(nombre)){
 	document.getElementById("obj-ca-control").innerHTML="";
 	nombre = parseInt(nombre);
@@ -342,7 +342,7 @@ if (reg.test(nombre1) && reg.test(nombre2) && reg.test(nombre)){
 		return 2;
 	}
 }else{
-	document.getElementById("obj-ca-control").innerHTML="Entrer des chiffres valides SVP, mettre 0 si vide";
+	document.getElementById("obj-ca-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
 	self.location.href="#obj-ca-control";
 	return 0;
 }
@@ -355,7 +355,7 @@ parametre : resultat net pour objectif n et n+1 n+2
 2 -> rempli mais pas en progression
 3 -> rempli et en progression
 */
-var reg = new RegExp('^[0-9]+$');
+var reg = new RegExp('^(-|)\[0-9]+$');
 if (reg.test(nombre1) && reg.test(nombre2) && reg.test(nombre)){
 	document.getElementById("obj-rn-control").innerHTML="";
 	nombre = parseInt(nombre);
@@ -367,7 +367,7 @@ if (reg.test(nombre1) && reg.test(nombre2) && reg.test(nombre)){
 		return 2;
 	}
 }else{
-	document.getElementById("obj-rn-control").innerHTML="Entrer des chiffres valides SVP, mettre 0 si vide";
+	document.getElementById("obj-rn-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
 	self.location.href="#obj-rn-control";
 	return 0;
 }

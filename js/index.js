@@ -318,7 +318,7 @@ if (reg.test(n) && reg.test(n1) && reg.test(n2)){
 	}
 	
 }else{
-	document.getElementById("obj-fp-control").innerHTML="Entrer des chiffres corrects SVP, mettre 0 si vide";
+	document.getElementById("obj-fp-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
 	self.location.href="#obj-fp-control";
 	return 0;
 }

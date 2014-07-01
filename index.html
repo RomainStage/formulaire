@@ -45,8 +45,8 @@
 				
 			</div>
 			<!-- INFORMATIONS ***************************************** -->
-			<div class="col-md-4" >
-			<h3 class="text-success"><b>Vos Informations:</b></br><small>informations générales</small></h3>
+			<div class="col-md-4" style="border-right: solid grey 1px">
+			<h3 class="text-success"  ><b>Vos informations :</b></br><small class="text-success">Informations générales</small></h3>
 			  <form role="form" >
 			  	  <!--
 			  	  <div class="form-group" id="siren-statut" >
@@ -62,17 +62,20 @@
 				   
 				   <div class="form-group" id="id-statut">
 					<label for="email">Nom de l'entreprise : </br><small class="text-danger" id="nom-control"></small></label>
-					<input type="text" class="form-control" id="nom-entreprise" placeholder="Entrer votre nom">
+					<input type="text" class="form-control" id="nom-entreprise" placeholder="Entrer le nom">
+				 	</br>
 				  </div>
 				   
 				   <div class="form-group" id="id-statut">
 					<label for="email">Email, téléphone ou fax : </br><small class="text-danger" id="email-control"></small></label>
 					<input type="text" class="form-control" id="email" placeholder="Entrer votre information">
+				  	</br>
 				  </div>
 				   
 				   
 					<label for="type">Forme juridique : </br><small class="text-danger" id="forme-juridique-control"></small></label>
 					<select name="forme-juri" class="form-control" id="forme-juridique"><option value="0" selected="1">Forme Juridique</option><option value="sa">SA</option><option value="sas">SAS</option><option value="sarl">SARL</option></select>
+				  	</br>
 				  </div>
 				  <div class="form-group">
 					<label for="annee">Année de création : </br><small class="text-danger" id="annee-creation-control"></small></label>
@@ -92,18 +95,19 @@
 				</form>
 			</div>
 						<!-- BILAN ***************************************** -->
-			<div class="col-md-4 col-md-offset-0" style="border-left: solid grey 1px">
-			<h3 class="text-success"><b>Votre bilan:</b></br><small>Deux derniers exercices</br>(n-2 et n-1)</small></h3>
+			<div class="col-md-4 col-md-offset-0" >
+			<h3 class="text-success"><b>Votre bilan :</b></br><small class="text-success">Deux derniers exercices (n-2 et n-1)</small></h3>
 			
 			  <form role="form">
 				 
 				  <div class="form-group">
 					<label for="employé">Nombre d'employés : </br><small class="text-danger" id="nombre-employe-now-control"></small></label>
 					<input type="text" class="form-control" id="nombre_employe_now" placeholder="Entrez le nombre d'employés">
+				  	</br>
 				  </div>
 				  <!-- pour le Chiffre d'affairess -->
-				   <div class="form-group">
-					<label for="CA">Chiffre d'affairess de : (en k€)</br><small class="text-danger" id="bilan-ca-control"></small></label>
+				   <div class="form-group" style="margin-bottom:0px;">
+					<label for="CA">Chiffre d'affaires de : (en k€)</br><small class="text-danger" id="bilan-ca-control"></small></label>
 				  </div>
 			
 				   <div class="form-group col-md-6">
@@ -112,14 +116,11 @@
 				  
 				  <div class="form-group col-md-6" >
 					<input type="text" class="form-control annee-1" id="bilan-ca-1" placeholder="" data-toggle="tooltip" title=""  name="secondname">
-				  </div>
-				 
+				 </br>
+				  </div>				  
 				  
-				  
-				  
-				    <!-- pour les resultats nets-->
-				    
-				     <div class="form-group">
+				    <!-- pour les resultats nets-->				    
+				     <div class="form-group" style="margin-bottom:0px;">
 					<label for="CA">Résulats nets après impots : (en k€)</br><small class="text-danger" id="bilan-rn-control"></small></label>
 				  </div>
 				 
@@ -129,10 +130,11 @@
 				  
 				   <div class="form-group col-md-6">
 					<input type="text" class="form-control annee-1" id="bilan-rn-1" placeholder="" data-toggle="tooltip" title=""  name="secondname">
+				  	</br>
 				  </div>
-					<!-- pour le capital social -->
-				   
-				    <div class="form-group">
+				  
+					<!-- pour le capital social -->				   
+				    <div class="form-group" style="margin-bottom:0px;">
 					<label for="CA">Capital social : (en k€)</br><small class="text-danger" id="bilan-cs-control"></small></label>
 				  </div>
 				  
@@ -142,15 +144,13 @@
 				  
 				    <div class="form-group col-md-6">
 					<input type="text" class="form-control annee-1" id="bilan-cs-1" placeholder="" data-toggle="tooltip" title=""  name="secondname">
-				  </div>
-				  
-				  
-				  
+				  </div>				  
 				</form>
 			</div>
+			
 						<!-- OBJECTIF ***************************************** -->
 			<div class="col-md-4 col-md-offset-0" style="border-left: solid grey 1px">
-			<h3 class="text-success"><b>Vos objectifs de développement:</b></br><small>Exercice en cours et des deux prochains exercices (n, n+1, n+2)</small></h3>
+			<h3 class="text-success"><b>Vos objectifs futurs :</b></br><small class="text-success">Exercice en cours et des deux prochains exercices (n, n+1, n+2)</small></h3>
 			    <form role="form">
 				 
 				  <div class="form-group">
@@ -158,8 +158,8 @@
 					<input type="text" class="form-control" id="nombre_employe_obj" placeholder="Entrez le nombre d'employés">
 				  </div>
 				  <!-- pour le Chiffre d'affairess -->
-				   <div class="form-group">
-					<label for="CA">Chiffre d'affairess prévisionnel : (en k€)</br><small class="text-danger" id="obj-ca-control"></small></label>
+				   <div class="form-group" style="margin-bottom:0px;">
+					<label for="CA">Chiffre d'affaires prévisionnel : (en k€)</br><small class="text-danger" id="obj-ca-control"></small></label>
 				  </div>
 				  <div class="form-group col-md-4">
 					<input type="text" class="form-control annee-0" id="obj-ca-0" placeholder="" data-toggle="tooltip" title=""  name="secondname">
@@ -169,12 +169,13 @@
 				  </div>
 				   <div class="form-group col-md-4">
 					<input type="text" class="form-control annee+2" id="obj-ca-2" placeholder="" data-toggle="tooltip" title=""  name="secondname">
+				  	</br>
 				  </div>
 				  
 				 
 				    <!-- pour les resultats nets-->
 				    
-				     <div class="form-group">
+				     <div class="form-group" style="margin-bottom:0px;">
 					<label for="CA">Résulats nets prévisionnel : (en k€)</br><small class="text-danger" id="obj-rn-control"></small></label>
 				  </div>
 				  <div class="form-group col-md-4">
@@ -185,10 +186,11 @@
 				  </div>
 				   <div class="form-group col-md-4">
 					<input type="text" class="form-control annee+2" id="obj-rn-2" placeholder="" data-toggle="tooltip" title=""  name="secondname">
+				  	</br>
 				  </div>
 				  
 				  <!-- pour les fonds propres-->
-				  <div class="form-group">
+				  <div class="form-group" style="margin-bottom:0px;">
 					<h3 for="CA" class="text-success">Source de financement:</h3>
 					<label>Vos besoins de fonds propres : (en k€)</br><small class="text-danger" id="obj-fp-control"></small></label>
 				  </div>

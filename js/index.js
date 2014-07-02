@@ -49,10 +49,6 @@ index.verif_formulaire = function (){
 	/* partie objectif */
 	var nombreEmployeObj = document.getElementById("nombre_employe_obj").value;//nombre employé actuel
 	
-	var objFP0 = document.getElementById("obj-fp-0").value;//fond propre n
-	var objFP1 = document.getElementById("obj-fp-1").value;//fond propre n+1
-	var objFP2 = document.getElementById("obj-fp-2").value;//fond propre n+2
-	
 	var objCA0 = document.getElementById("obj-ca-0").value;//chiffre affaire n
 	var objCA1 = document.getElementById("obj-ca-1").value;//chiffre affaire n+1
 	var objCA2 = document.getElementById("obj-ca-2").value;//chiffre affaire n+2
@@ -60,6 +56,10 @@ index.verif_formulaire = function (){
 	var objRN0 = document.getElementById("obj-rn-0").value;//résulat net n
 	var objRN1 = document.getElementById("obj-rn-1").value;//résulat net n+1
 	var objRN2 = document.getElementById("obj-rn-2").value;//resultat net n+2
+	
+	var objFP0 = document.getElementById("obj-fp-0").value;//fond propre n
+	var objFP1 = document.getElementById("obj-fp-1").value;//fond propre n+1
+	var objFP2 = document.getElementById("obj-fp-2").value;//fond propre n+2
 	
 	//remplissage de l'objet à transmettre dans la DB
 	
@@ -81,9 +81,6 @@ index.verif_formulaire = function (){
 	
 	//partie obj
 	objet.employeObj = nombreEmployeObj;
-	objet.fondPropreN0 = objFP0;
-	objet.fondPropreN1 = objFP1;
-	objet.fondPropreN2 = objFP2;
 	
 	objet.chiffreAffaireObj0 = objCA0;
 	objet.chiffreAffaireObj1 = objCA2;
@@ -92,6 +89,15 @@ index.verif_formulaire = function (){
 	objet.resultatNetObj0 = objRN0;
 	objet.resultatNetObj1 = objRN1;
 	objet.resultatNetObj2 = objRN2;
+	
+	objet.fondPropreN0 = objFP0;
+	objet.fondPropreN1 = objFP1;
+	objet.fondPropreN2 = objFP2;
+		//remplissage de l'objet pour investissement bancaire
+	objet.financementInvestissement0 =document.getElementById("obj-fp-endettement-0").value;
+	objet.financementInvestissement1 =document.getElementById("obj-fp-endettement-1").value;
+	objet.financementInvestissement2 =document.getElementById("obj-fp-endettement-2").value;
+	
 	
 	//action
 	objet.action = "transmettre";

@@ -266,6 +266,7 @@ retourne:
 		return 0;
 	}else if(!reg.test(rn)){
 		document.getElementById("bilan-rn-control").innerHTML = "";
+		document.getElementById("bilan-cs-control").innerHTML = "";
 		document.getElementById("obj-rn-control").innerHTML = "Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
 		self.location.href="#obj-rn-control";
 		return 0;

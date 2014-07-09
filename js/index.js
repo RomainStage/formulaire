@@ -5,7 +5,7 @@ var index ={};
 var objet = {};//objet envoyé au router et DB
 
 index.start = function () {
-	document.addEventListener("click", index.on_click); // pour êvenement quand on clique sur la souris
+	//document.addEventListener("click", index.on_click); // pour êvenement quand on clique sur la souris
 	document.addEventListener("keydown", index.on_keydown); 
 	index.on_date();
 	

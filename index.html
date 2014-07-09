@@ -55,7 +55,7 @@
 			</div>
 			<!-- INFORMATIONS ***************************************** -->
 			<div class="col-md-4" style="border-right: solid grey 1px">
-			<h3 class="text-success"  ><b>Vos informations :</b></br><small class="text-success">Informations générales</small></h3>
+			<h3 class="text-success"  ><b>Informations :</b></br><small class="text-success">Informations générales</small></h3>
 			  <form role="form" >
 			  	  <!--
 			  	  <div class="form-group" id="siren-statut" >
@@ -117,7 +117,7 @@
 			</div>
 						<!-- BILAN ***************************************** -->
 			<div class="col-md-4 col-md-offset-0" >
-			<h3 class="text-success"><b>Votre bilan :</b></br><small class="text-success">Deux derniers exercices (n-2 et n-1)</small></h3>
+			<h3 class="text-success"><b>Bilan :</b></br><small class="text-success">Deux derniers exercices (n-2 et n-1)</small></h3>
 			
 			  <form role="form">
 				 
@@ -185,7 +185,7 @@
 			
 						<!-- OBJECTIF ***************************************** -->
 			<div class="col-md-4 col-md-offset-0" style="border-left: solid grey 1px">
-			<h3 class="text-success"><b>Vos objectifs :</b></br><small class="text-success">Exercice en cours (n) et deux prochains exercices (n+1, n+2)</small></h3>
+			<h3 class="text-success"><b>Objectifs :</b></br><small class="text-success">Exercice en cours (n) et deux prochains exercices (n+1, n+2)</small></h3>
 			    <form role="form">
 				 
 				  <div class="form-group">
@@ -244,7 +244,7 @@
 				  
 				  <!-- pour les fonds propres-->
 				  <div class="form-group" style="margin-bottom:0px;">
-					<h3 for="CA" class="text-success">Source de financement :</h3>
+					<h3 for="CA" class="text-success"><b>Financement :</b></h3>
 					<label>Fonds propres (par augmentation de capital) :</br><small class="text-danger" id="obj-fp-control"></small></label>
 				  </div>
 				  <div class="form-group col-md-4" style="padding:2px">
@@ -298,15 +298,15 @@
 	</div> <!-- /container -->
 	</br></br>
 	<div class="container">
-		<div class="row">		<!--onclick="index.verif_formulaire()" -->
-			<div type="submit" class="btn  btn-block btn-xl btn-primary "  id="btn-tester"><span class="" style="">Tester !</span></div>
+		<div class="row">		<!--" -->
+			<div type="submit" class="btn  btn-block btn-xl btn-primary "  id="btn-tester" onclick="index.verif_formulaire()"><span class="" style="">Tester !</span></div>
 		</div><!-- /row -->
 	</div><!-- /container -->
 	
 	<div class="container"><!-- container pour afficher le resultat -->
 		<div class="row">
 			<div class="col-md-12 col-md-offset-0" id="resultat-visibilite" style="display:none">
-				<h1 class="text-info" >Résultats : </h1>
+				<h1 class="text-info" >Résultat : </h1>
 				<h2 id="resultat-formulaire" class=""></h2>
 				<h2 class="text-primary">Diagnostic automatique réalisé par le CIIB SA.<span id="resultat-formulaire-fond-propre" ></span></h2>
 			</div>

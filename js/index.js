@@ -5,7 +5,7 @@ var index ={};
 var objet = {};
 
 index.start = function () {
-	document.addEventListener("click", index.on_click); // pour êvenement quand on clique sur la souris
+	//document.addEventListener("click", index.on_click); // pour êvenement quand on clique sur la souris
 	document.addEventListener("keydown", index.on_keydown); 
 	index.on_date();
 	
@@ -26,6 +26,49 @@ index.on_keydown = function (ev){
 		
 	}
 };
+index.on_date = function (){
+
+	var d = new Date();
+	d +="";
+	d = d.split(" ");
+	d = parseInt(d[3]);
+	
+	var anneeMoinsUn = document.getElementsByClassName("annee-1");
+
+	for (var i = 0; i < anneeMoinsUn.length; i++) {
+    anneeMoinsUn[i].placeholder = "n-1";
+    anneeMoinsUn[i].title = "n-1";
+	}
+	
+	var anneeMoinsDeux = document.getElementsByClassName("annee-2");
+
+	for (var i = 0; i < anneeMoinsDeux.length; i++) {
+    anneeMoinsDeux[i].placeholder = "n-2";
+    anneeMoinsDeux[i].title = "n-2";
+	}
+	
+	var anneeActuelle = document.getElementsByClassName("annee-0");
+
+	for (var i = 0; i < anneeActuelle.length; i++) {
+    anneeActuelle[i].placeholder = "n";
+    anneeActuelle[i].title = "n";
+	}
+	
+	var anneePlusUn = document.getElementsByClassName("annee+1");
+
+	for (var i = 0; i < anneePlusUn.length; i++) {
+    anneePlusUn[i].placeholder = "n+1";
+    anneePlusUn[i].title = "n+1";
+	}
+	
+	var anneePlusDeux = document.getElementsByClassName("annee+2");
+
+	for (var i = 0; i < anneePlusDeux.length; i++) {
+    anneePlusDeux[i].placeholder = "n+2";
+    anneePlusDeux[i].title = "n+2";
+	}
+	
+};//fonciton pour affichage n-1, n-2, n , n+1
 
 /************************************************************************************************************************/
 /*
@@ -103,15 +146,6 @@ index.verif_formulaire = function (){
 	objet.financementInvestissement1 =document.getElementById("obj-fp-endettement-1").value;
 	objet.financementInvestissement2 =document.getElementById("obj-fp-endettement-2").value;	
 	
-	//si il n'ya pas derreur dans le formulaire on stocke dans la base de donnée
-	/*
-	var note = index.last_(index.annee_creation(anneCrea),index.forme_juridique(formeJuridique),index.nombre_employe_now(nombreEmployeNow),index.bilan_chiffre_affaire(bilanCA1,bilanCA2),index.bilan_resultat_net(bilanRN1,bilanRN2), index.bilan_capital_social(bilanCSN1,objRN0,bilanRN1,bilanRN2), index.obj_fond_propre(objFP0,objFP1,objFP2),index.obj_resultat_net(objRN0, objRN1, objRN2),index.obj_chiffre_affaire(objCA0, objCA1, objCA2),index.nombre_employe_obj(nombreEmployeObj,nombreEmployeNow))
-	if(note != 0 && objet.email != "")
-	{
-		objet.note = note;		
-		index.post(objet, index.log_callback);
-	}
-	*/	
 	
 	//mes fonction pour sarl ou SAS
 	
@@ -135,6 +169,7 @@ index.verif_formulaire = function (){
 		if(note != 0 && objet.email != "") index.post(objet, index.log_callback);
 	}else if (debut == 2){//si c'est une SA
 		var note = index.sa_last(index.sa_evo_ca(bilanCA2, bilanCA1, objCA0, objCA1, objCA2), index.sa_evo_rn(bilanRN2, bilanRN1, objRN0, objRN1, objRN2), index.sa_chiffreAffaireN(objCA0), index.sa_fp(objFP0, objFP1, objFP2));
+		if(note != 0 && objet.email != "") index.post(objet, index.log_callback);
 	}else return;
 	
 };
@@ -393,7 +428,7 @@ if (employ == 0 || annee == 0 || ca == 0 || cs == 0 || evoCA == 0 || evoRN == 0)
 
 index.sa_chiffreAffaireN= function (nombre){
 /*
-	prend en parametre le CA à n-1 et retourne :
+	prend en parametre le CA à et retourne :
 	0 -> pas remplie
 	1 -> < 500k
 	2 -> >= 500k
@@ -416,7 +451,7 @@ if (reg.test(nombre)){
 	self.location.href="#bilan-ca-control";
 	return 0;	
 }	
-};//fonction pour le CA n - 1 --- pour les SA
+};//fonction pour le CA--- pour les SA
 index.sa_evo_ca= function (CA2,CA1,CA,CA11,CA22){
 /*
 parametre entrée = ca2 = ca n-2
@@ -589,49 +624,7 @@ if (evoCA == 0 || evoRN == 0 || CA == 0 || FP ==0){
 
 /************************************************************************************************************************/
 
-index.on_date = function (){
 
-	var d = new Date();
-	d +="";
-	d = d.split(" ");
-	d = parseInt(d[3]);
-	
-	var anneeMoinsUn = document.getElementsByClassName("annee-1");
-
-	for (var i = 0; i < anneeMoinsUn.length; i++) {
-    anneeMoinsUn[i].placeholder = "n-1";
-    anneeMoinsUn[i].title = "n-1";
-	}
-	
-	var anneeMoinsDeux = document.getElementsByClassName("annee-2");
-
-	for (var i = 0; i < anneeMoinsDeux.length; i++) {
-    anneeMoinsDeux[i].placeholder = "n-2";
-    anneeMoinsDeux[i].title = "n-2";
-	}
-	
-	var anneeActuelle = document.getElementsByClassName("annee-0");
-
-	for (var i = 0; i < anneeActuelle.length; i++) {
-    anneeActuelle[i].placeholder = "n";
-    anneeActuelle[i].title = "n";
-	}
-	
-	var anneePlusUn = document.getElementsByClassName("annee+1");
-
-	for (var i = 0; i < anneePlusUn.length; i++) {
-    anneePlusUn[i].placeholder = "n+1";
-    anneePlusUn[i].title = "n+1";
-	}
-	
-	var anneePlusDeux = document.getElementsByClassName("annee+2");
-
-	for (var i = 0; i < anneePlusDeux.length; i++) {
-    anneePlusDeux[i].placeholder = "n+2";
-    anneePlusDeux[i].title = "n+2";
-	}
-	
-};//fonciton pour affichage des année//
 
 
 

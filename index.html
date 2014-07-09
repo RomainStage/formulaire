@@ -17,6 +17,15 @@
     <link href="css/index.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.js"> </script>
      <script type="text/javascript" src="js/bootstrap.min.js"> </script>
+     <style>
+     .btn-xl{
+     	 padding: 18px 28px;
+     	 font-size: 22px;
+     	 font-weight:bold; color:white;
+     	 line-height: normal;
+     	 
+     }
+     </style><!-- pour modifier la taille du bouton tester-->
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -284,7 +293,7 @@
 	</br></br>
 	<div class="container">
 		<div class="row">		
-			<div type="submit" class="btn btn-lg btn-block btn-primary col-md-offset-0 col-md-3" id="btn-tester"><span class="" style="font-weight:bold; color:white;">Tester !</span></div>
+			<div type="submit" class="btn  btn-block btn-xl btn-primary " onclick="index.verif_formulaire()" id="btn-tester"><span class="" style="">Tester !</span></div>
 		</div><!-- /row -->
 	</div><!-- /container -->
 	
@@ -293,7 +302,7 @@
 			<div class="col-md-12 col-md-offset-0" id="resultat-visibilite" style="display:none">
 				<h1 class="text-info" >Résultats : </h1>
 				<h2 id="resultat-formulaire" class=""></h2>
-				<h2>Vous pourriez être éligible à : <span id="resultat-formulaire-fond-propre" class=""></span></h2>
+				<h2>Diagnostic automatique réalisé par le CIIB SA.<span id="resultat-formulaire-fond-propre" class=""></span></h2>
 			</div>
 		</div><!-- /row -->
 	</div><!-- /container -->

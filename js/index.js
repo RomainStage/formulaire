@@ -437,18 +437,18 @@ index.sa_chiffreAffaireN= function (nombre){
 var reg = new RegExp('^(-|)\[0-9]+$');
 if (reg.test(nombre)){
 	if (parseInt(nombre)<500000){
-		document.getElementById("bilan-ca-control").innerHTML="";
+		document.getElementById("obj-ca-control").innerHTML="";
 		return 1;
 	}else if(parseInt(nombre)>=500000 && parseInt(nombre)<1000000){
-		document.getElementById("bilan-ca-control").innerHTML="";
+		document.getElementById("obj-ca-control").innerHTML="";
 		return 2;
 	}else {
-		document.getElementById("bilan-ca-control").innerHTML="";
+		document.getElementById("obj-ca-control").innerHTML="";
 		return 3;
 	}
 }else{
-	document.getElementById("bilan-ca-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
-	self.location.href="#bilan-ca-control";
+	document.getElementById("obj-ca-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
+	self.location.href="#obj-ca-control";
 	return 0;	
 }	
 };//fonction pour le CA--- pour les SA

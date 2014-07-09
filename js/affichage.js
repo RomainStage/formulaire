@@ -150,7 +150,7 @@ if (tab[i]){
 		newDataDate.style.border = "solid grey 1px";
 	
 		newDataName.appendChild(document.createTextNode(tab[i].nomEntreprise));//on écrit les donnée
-		newDataMail.appendChild(document.createTextNode(tab[i].email));
+		newDataMail.appendChild(document.createTextNode(tab[i].howToJoin+" : "+tab[i].email));
 		newDataNote.appendChild(document.createTextNode(tab[i].note));
 		newDataDate.appendChild(document.createTextNode(date1[0]+"/"+date[1]+"/"+date[0]));
 			

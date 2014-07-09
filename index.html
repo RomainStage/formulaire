@@ -77,9 +77,15 @@
 				   
 				   <div class="form-group" id="id-statut">
 					<label for="email">Email, téléphone ou fax : </br><small class="text-danger" id="email-control"></small></label>
-					<input type="text" class="form-control" id="email" placeholder="Entrer votre information">
-				  	</br>
+					
 				  </div>
+				  
+				<div class="form-group">
+    				<div class="input-group">
+    				<input type="text" class="form-control" id="join-info" placeholder="Entrer votre information">
+					<div class="input-group-addon"><select class="" id="how-join"> <option>mail</option>  <option>tel</option>  <option>fax</option></select></div>
+				  </div>
+				</div>
 				  
 				  <div class="form-group">
 					<label for="employé">Nombre d'employés : </br><small class="text-danger" id="nombre-employe-now-control"></small></label>
@@ -292,8 +298,8 @@
 	</div> <!-- /container -->
 	</br></br>
 	<div class="container">
-		<div class="row">		
-			<div type="submit" class="btn  btn-block btn-xl btn-primary " onclick="index.verif_formulaire()" id="btn-tester"><span class="" style="">Tester !</span></div>
+		<div class="row">		<!--onclick="index.verif_formulaire()" -->
+			<div type="submit" class="btn  btn-block btn-xl btn-primary "  id="btn-tester"><span class="" style="">Tester !</span></div>
 		</div><!-- /row -->
 	</div><!-- /container -->
 	
@@ -302,7 +308,7 @@
 			<div class="col-md-12 col-md-offset-0" id="resultat-visibilite" style="display:none">
 				<h1 class="text-info" >Résultats : </h1>
 				<h2 id="resultat-formulaire" class=""></h2>
-				<h2>Diagnostic automatique réalisé par le CIIB SA.<span id="resultat-formulaire-fond-propre" class=""></span></h2>
+				<h2 class="text-primary">Diagnostic automatique réalisé par le CIIB SA.<span id="resultat-formulaire-fond-propre" ></span></h2>
 			</div>
 		</div><!-- /row -->
 	</div><!-- /container -->

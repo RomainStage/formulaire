@@ -8,6 +8,7 @@ index.start = function () {
 	//document.addEventListener("click", index.on_click); // pour êvenement quand on clique sur la souris
 	document.addEventListener("keydown", index.on_keydown); 
 	index.on_date();
+	index.padding_less();
 	
 };
 index.on_click = function (ev) {
@@ -72,7 +73,13 @@ index.on_date = function (){
 	}
 	
 };//fonciton pour affichage n-1, n-2, n , n+1
+index.padding_less = function (){
+var paddingless = document.getElementsByClassName("enlever-padding");
 
+	for (var i = 0; i < paddingless.length; i++) {
+    paddingless[i].style.padding = "5px";
+	}
+};//fonction qui modifie le padding des cases
 /************************************************************************************************************************/
 /*
 	fonction qui récupére les données du formulaire. puis on envoie ces données dans d'autre fonctions de vérif
@@ -93,7 +100,7 @@ index.verif_formulaire = function (){
 	var bilanCSN1 = document.getElementById("bilan-cs-1").value;//Capital social n-1
 		
 	/* partie objectif */
-	var nombreEmployeObj = document.getElementById("nombre_employe_obj").value;//nombre employé actuel
+	
 	
 	var objCA0 = document.getElementById("obj-ca-0").value;//chiffre affaire n
 	var objCA1 = document.getElementById("obj-ca-1").value;//chiffre affaire n+1
@@ -131,7 +138,7 @@ index.verif_formulaire = function (){
 	objet.bilanCapitalSocialNmoins1 = bilanCSN1;
 	
 	//partie obj
-	objet.employeObj = nombreEmployeObj;
+	
 	
 	objet.chiffreAffaireObj0 = objCA0;
 	objet.chiffreAffaireObj1 = objCA2;
@@ -604,7 +611,7 @@ if (evoCA == 0 || evoRN == 0 || CA == 0 || FP ==0){
 	et si RN n-1 < RN n+2
 		*/	
 			
-		document.getElementById("resultat-formulaire").innerHTML="Ce diagnostic automatique a pour premier objectif de vous apporter un éclairage nouveau sur les possibilités de financement en fonds propres de votre entreprise avec l’actionnariat individuel.</br></br>Votre entreprise, de part la croissance de son chiffre d’affaires et de ses résultats, ainsi que de part sa forme juridique (1), se prête bien à l’ouverture de son capital à l’actionnariat individuel grâce à l’utilisation d’un marché d’actions, avec ou sans la bourse.</br></br>La mise en place et l’utilisation de votre propre bourse indépendante<a target='_blank' href = 'http://www.ciib.fr/documents/CIIB-Marche-Actions-gre_a_gre.pdf'> (Carnet d’annonces) </a>serait le moyen de vous préparer à l’avance à une éventuelle future introduction sur le Marché Libre ou sur Alternext. Ceci tout en vous permettant de réaliser une ou plusieurs augmentations de capital successives.</br></br>Le CIIB SA se propose, à la lecture de votre dernier bilan et d’après vos objectifs de développement, d’affiner ce premier diagnostic automatique.</br>Nous vous invitons à contacter le CIIB SA en cliquant <a target='_blank' href = 'http://www.ciib.fr/contact-us-email'>ici.</a></br></br>Si vous le souhaitez, nous pourrons ensuite réaliser une étude de faisabilité approfondie sur la capacité de votre entreprise à accroître ses fonds propres avec l'épargne individuelle.</br></br>Par ailleurs, si votre emploi du temps vous le permet, nous nous vous proposons de participer à notre prochain séminaire <a target='_blank' href = 'http://www.ciib.fr/formations/mini-bourse'><em>Disposer d’un marché d’actions, sans la bourse, pour financer le développement de votre entreprise (dès 4 salariés) avec des épargnants individuels</em></a>.</br></br></br></br>(1) En effet, seules les entreprises ayant la forme de SA peuvent avoir leur marché d’actions, avec ou sans la bourse</br>";
+		document.getElementById("resultat-formulaire").innerHTML="Ce diagnostic automatique a pour premier objectif de vous apporter un éclairage nouveau sur les possibilités de financement en fonds propres de votre entreprise avec l’actionnariat individuel.</br></br>Votre entreprise, de part les objectifs de croissance de son chiffre d’affaires et de ses résultats, ainsi que de part sa forme juridique (1), se prête à l’ouverture de son capital à l’actionnariat individuel grâce à l’utilisation d’un marché d’actions, avec ou sans la bourse.</br></br>La mise en place et l’utilisation de votre propre bourse indépendante<a target='_blank' href = 'http://www.ciib.fr/documents/CIIB-Marche-Actions-gre_a_gre.pdf'> (Carnet d’annonces) </a>serait le moyen de vous préparer à l’avance à une éventuelle future introduction sur le Marché Libre ou sur Alternext. Ceci tout en vous permettant de réaliser une ou plusieurs augmentations de capital successives.</br></br>Le CIIB SA se propose, à la lecture de votre dernier bilan et d’après vos objectifs de développement, d’affiner ce premier diagnostic automatique.</br>Nous vous invitons à contacter le CIIB SA en cliquant <a target='_blank' href = 'http://www.ciib.fr/contact-us-email'>ici.</a>Nous définirons ensemble le prix d'émission des actions et le montant d'augmentation de capital possible pour votre entreprise.</br></br>Si vous le souhaitez, nous pourrons ensuite réaliser une étude de faisabilité approfondie sur la capacité de votre entreprise à accroître ses fonds propres avec l'épargne individuelle.</br></br>Par ailleurs, si votre emploi du temps vous le permet, nous nous vous proposons de participer à notre prochain séminaire <a target='_blank' href = 'http://www.ciib.fr/formations/mini-bourse'><em>Disposer d’un marché d’actions, sans la bourse, pour financer le développement de votre entreprise (dès 4 salariés) avec des épargnants individuels</em></a>.</br></br></br></br>(1) En effet, seules les entreprises ayant la forme de SA peuvent avoir leur marché d’actions, avec ou sans la bourse</br>";
 	}else {
 		
 		

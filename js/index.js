@@ -169,8 +169,9 @@ index.verif_formulaire = function (){
 	//(index.annee_creation(anneCrea));
 	//(index.chiffreAffaireNmoinsUn(bilanCA1));
 	//(index.sarl_capital_social(bilanCSN1, objRN0, bilanRN1, bilanRN2));
-	//(index.sarl_evo_ca(bilanCA2, bilanCA1, objCA0, objCA1, objCA2));
-	//(index.sarl_evo_rn(bilanRN2, bilanRN1, objRN0, objRN1, objRN2));
+	//console.log(index.sarl_evo_ca(bilanCA2, bilanCA1, objCA0, objCA1, objCA2));
+	//console.log(index.sarl_evo_rn(bilanRN2, bilanRN1, objRN0, objRN1, objRN2));
+	//console.log(index.sarl_fp(objFP0, objFP1, objFP2));
 	
 	//pour les SA
 	
@@ -181,7 +182,7 @@ index.verif_formulaire = function (){
 	var debut = (index.forme_juridique(formeJuridique));
 	
 	if (debut == 1){//si c'est une SARL ou SAS
-		var note = index.sarl_last(index.nombre_employe_now(nombreEmployeNow), index.annee_creation(anneCrea), index.sarl_chiffreAffaireNmoinsUn(bilanCA1), index.sarl_capital_social(bilanCSN1, objRN0, bilanRN1, bilanRN2), index.sarl_evo_ca(bilanCA2, bilanCA1, objCA0, objCA1, objCA2), index.sarl_evo_rn(bilanRN2, bilanRN1, objRN0, objRN1, objRN2));
+		var note = index.sarl_last(index.nombre_employe_now(nombreEmployeNow), index.annee_creation(anneCrea), index.sarl_chiffreAffaireNmoinsUn(bilanCA1), index.sarl_capital_social(bilanCSN1, objRN0, bilanRN1, bilanRN2), index.sarl_evo_ca(bilanCA2, bilanCA1, objCA0, objCA1, objCA2), index.sarl_evo_rn(bilanRN2, bilanRN1, objRN0, objRN1, objRN2), index.sarl_fp(objFP0, objFP1, objFP2));
 		if(note != 0 && objet.email != "") index.post(objet, index.log_callback);
 	}else if (debut == 2){//si c'est une SA
 		var note = index.sa_last(index.sa_evo_ca(bilanCA2, bilanCA1, objCA0, objCA1, objCA2), index.sa_evo_rn(bilanRN2, bilanRN1, objRN0, objRN1, objRN2), index.sa_chiffreAffaireN(objCA0), index.sa_fp(objFP0, objFP1, objFP2));
@@ -339,9 +340,9 @@ index.sarl_evo_ca= function (CA2,CA1,CA,CA11,CA22){
 /*
 ca2 = ca n-2
 ca22 = ca n+2
-si CA n-2 < CA n-1 < CA n < CA n+1 < CA n+2
-retourn 2
-sinon 1
+2 -> si CA n-2 < CA n-1 < CA n < CA n+1 < CA n+2
+3 -> CA n et n+1 et n+2 <=500k
+1 -> sinon
 0 si pas remplie
 */
 var reg = new RegExp('^(-|)\[0-9]+$');
@@ -350,7 +351,10 @@ if (reg.test(CA2) && reg.test(CA1) && reg.test(CA) && reg.test(CA11) && reg.test
 document.getElementById("obj-ca-control").innerHTML="";
 document.getElementById("bilan-ca-control").innerHTML="";
 	if (parseInt(CA2)<parseInt(CA1) && parseInt(CA1)<parseInt(CA) && parseInt(CA)<parseInt(CA11) && parseInt(CA11)<parseInt(CA22)){
+		//2 -> si CA n-2 < CA n-1 < CA n < CA n+1 < CA n+2
 		return 2;
+	}else if(parseInt(CA)<=500000 && parseInt(CA11)<=500000 && parseInt(CA22)<=500000){
+		return 3;
 	}else return 1;
 }else if (!reg.test(CA2) || !reg.test(CA1)){
 	document.getElementById("bilan-ca-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
@@ -369,9 +373,9 @@ index.sarl_evo_rn= function (CA2,CA1,CA,CA11,CA22){
 /*
 ca2 = ca n-2
 ca22 = ca n+2
-si CA n-2 < CA n-1 < CA n < CA n+1 < CA n+2
-retourn 2
-sinon 1
+2 -> si CA n-2 < CA n-1 < CA n < CA n+1 < CA n+2
+3 -> CA n, n+1, n+2 <=500k
+1 -> sinon
 0 si pas remplie
 */
 var reg = new RegExp('^(-|)\[0-9]+$');
@@ -381,6 +385,8 @@ if (reg.test(CA2) && reg.test(CA1) && reg.test(CA) && reg.test(CA11) && reg.test
 	document.getElementById("bilan-rn-control").innerHTML="";
 	if (parseInt(CA2)<parseInt(CA1) && parseInt(CA1)<parseInt(CA) && parseInt(CA)<parseInt(CA11) && parseInt(CA11)<parseInt(CA22)){
 		return 2;
+	}else if(parseInt(CA)<=25000 && parseInt(CA11)<=25000 && parseInt(CA22)<=25000){
+		return 3;
 	}else return 1;
 }else if (!reg.test(CA2) || !reg.test(CA1)){
 	document.getElementById("bilan-rn-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
@@ -395,9 +401,27 @@ if (reg.test(CA2) && reg.test(CA1) && reg.test(CA) && reg.test(CA11) && reg.test
 
 
 };//fonction qui voit l'évolution du RN (similaire au dessus)
+index.sarl_fp = function (fp0,fp1,fp2){
+/*
+2 -> FPn+n+1+n+2 <= 50k
+1 -> sinon
+0 -> non rempli
+*/
+var reg = new RegExp('^(-|)\[0-9]+$');
+if (reg.test(fp0) && reg.test(fp1) && reg.test(fp2)){
+		document.getElementById("obj-fp-control").innerHTML="";
+		if ((parseInt(fp0)+parseInt(fp2)+parseInt(fp2))<= 50000){
+			return 2;
+		}else return 1;
+}else{
+	document.getElementById("obj-fp-control").innerHTML="Saisir uniquement des chiffres (sans virgule ni point). Saisir 0 en cas de chiffre d'affaires ou de résultat nul.";
+	self.location.href="#obj-fp-control";
+return 0;
+}
+};
 
-index.sarl_last =function (employ, annee, ca, cs, evoCA, evoRN){
-if (employ == 0 || annee == 0 || ca == 0 || cs == 0 || evoCA == 0 || evoRN == 0){
+index.sarl_last =function (employ, annee, ca, cs, evoCA, evoRN, FP){
+if (employ == 0 || annee == 0 || ca == 0 || cs == 0 || evoCA == 0 || evoRN == 0 || FP==0){
 	document.getElementById("resultat-visibilite").style.display="none";
 }else if (employ == 1 && annee == 1 && ca == 1 && cs == 1){
 /*
@@ -429,6 +453,15 @@ if (employ == 0 || annee == 0 || ca == 0 || cs == 0 || evoCA == 0 || evoRN == 0)
 	self.location.href="#resultat-visibilite";
 	
 	document.getElementById("resultat-formulaire").innerHTML="Ce diagnostic automatique a pour premier objectif de vous apporter un éclairage nouveau sur les possibilités de financement en fonds propres de votre entreprise avec l’actionnariat individuel.</br></br>Malgré la croissance constante du chiffre d’affaires et des résultats de votre entreprise (passés et prévisionnels), sa forme juridique ne se prête pas à la réalisation d’augmentations de capital avec des actionnaires individuels et l’utilisation d’un marché d’actions (Carnet d’annonces, Marché Libre ou Alternext).</br></br>En effet, les entreprises ayant la forme de SARL ou de SAS ne peuvent avoir leur marché d’actions qu’après transformation en SA (1).</br>Il se trouve que le niveau de fonds propres de votre entreprise semble suffisant pour réaliser une telle opération.</br></br>Le CIIB SA se propose cependant, à la lecture de votre dernier bilan et d’après vos objectifs de développement, d’affiner ce premier diagnostic automatique.</br>Nous vous invitons à contacter le CIIB SA en cliquant <a target='_blank' href = http://www.ciib.fr/contact-us-email>ici.</a></br></br>Il faut savoir que la mise en place d’un marché d’actions devient intéressante pour les entreprises en SA à partir de leur quatrième année d’existence, employant au moins 4 salariés et réalisant plus de 500 000 € de chiffre d’affaires.</br></br>La mise en place et l’utilisation de sa propre bourse indépendante<a target='_blank' href = http://www.ciib.fr/documents/CIIB-Marche-Actions-gre_a_gre.pdf  > (Carnet d’annonces) </a>étant le moyen de se préparer à l’avance à une éventuelle future introduction sur le Marché Libre ou sur Alternext. Ceci tout en permettant de réaliser une ou plusieurs augmentations de capital successives.</br></br>Dans la mesure où votre entreprise a de fortes perspectives de croissance, nous vous proposons, si votre emploi du temps vous le permet, de participer à notre prochain séminaire <a target='_blank' href = http://www.ciib.fr/formations/mini-bourse ><em>Disposer d’un marché d’actions, sans la bourse pour financer le développement de votre entreprise (dès 4 salariés) avec des épargnants individuels</em></a>.</br></br></br></br>(1) En effet, seules les entreprises ayant la forme de SA peuvent avoir leur marché d’actions, avec ou sans la bourse</br>";
+}else if(FP == 2 && evoCA == 3 && evoRN == 3){
+/*
+CA n, n+1, n+2 <= 500k
+RN pareil pour 25k
+FP n+n+1+n+2 <= 50k
+*/
+	document.getElementById("resultat-visibilite").style.display="";
+	self.location.href="#resultat-visibilite";
+	document.getElementById("resultat-formulaire").innerHTML="à remplir";
 }else {
 /*
 	autre cas

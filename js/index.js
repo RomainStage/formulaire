@@ -84,6 +84,11 @@ var paddingless = document.getElementsByClassName("enlever-padding");
 /*
 	fonction qui récupére les données du formulaire. puis on envoie ces données dans d'autre fonctions de vérif
 */
+
+index.verif_formulaire2 =function (){
+index.verif_formulaire();
+index.verif_formulaire();
+};
 index.verif_formulaire = function (){
 	/* partie informations */
 	var anneCrea = document.getElementById("annee-creation").value;//année creation
@@ -184,6 +189,7 @@ index.verif_formulaire = function (){
 	}else return;
 	
 };
+
 
 
 

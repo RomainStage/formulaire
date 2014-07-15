@@ -6,7 +6,7 @@ var objet = {};//objet envoyé au router et DB
 
 index.start = function () {
 	//document.addEventListener("click", index.on_click); // pour êvenement quand on clique sur la souris
-	document.addEventListener("keydown", index.on_keydown); 
+	document.addEventListener("keydown", index.on_keydown);
 	index.on_date();
 	index.padding_less();
 	
@@ -21,7 +21,7 @@ index.on_click = function (ev) {
 			index.verif_formulaire();
 		}
 };
-index.on_keydown = function (ev){
+index.on_keydown = function (ev){	
 	if (ev.which == 13 ){
 		
 		ev.preventDefault();
@@ -73,6 +73,7 @@ index.on_date = function (){
 	}
 	
 };//fonciton pour affichage n-1, n-2, n , n+1
+
 index.padding_less = function (){
 var paddingless = document.getElementsByClassName("enlever-padding");
 
@@ -80,6 +81,26 @@ var paddingless = document.getElementsByClassName("enlever-padding");
     paddingless[i].style.padding = "5px";
 	}
 };//fonction qui modifie le padding des cases
+
+var lisibilite_number = function(obj){
+		
+		obj.value=obj.value.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+		nbr=obj.value;
+		nbr.replace(".","");
+		var nombre = ''+nbr;
+		var retour = '';
+		var count=0;
+		for(var i=nombre.length-1 ; i>=0 ; i--)
+		{
+			if(count!=0 && count % 3 == 0)
+				retour = nombre[i]+'.'+retour ;
+			else
+				retour = nombre[i]+retour ;
+			count++;
+		}
+		obj.value = retour;
+		return retour;
+};
 /************************************************************************************************************************/
 /*
 	fonction qui récupére les données du formulaire. puis on envoie ces données dans d'autre fonctions de vérif
@@ -281,6 +302,7 @@ retourne
 1 = <= 500k
 2 = > 500k
 */
+nombre = nombre.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
 var reg = new RegExp('^(-|)\[0-9]+$');
 if (reg.test(nombre)){
 	if (parseInt(nombre)<=500000){
@@ -306,6 +328,11 @@ retourne:
 	1 ->somme <= 37k
 	2 ->somme > 37K
 */
+	cs = cs.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+	rn = rn.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+	rn1 = rn1.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+	rn2 = rn2.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+	
 	var reg = new RegExp('^(-|)\[0-9]+$');
 	
 	if (reg.test(cs) && reg.test(rn) && reg.test(rn1) && reg.test(rn2)){
@@ -344,6 +371,12 @@ parametre entrée : ca2 = ca n-2 et ca22 = ca n+2
 1 -> sinon
 0 si pas remplie
 */
+CA2 = CA2.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA1 = CA1.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA = CA.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA11 = CA11.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA22 = CA22.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+
 var reg = new RegExp('^(-|)\[0-9]+$');
 
 if (reg.test(CA2) && reg.test(CA1) && reg.test(CA) && reg.test(CA11) && reg.test(CA22)){
@@ -377,6 +410,12 @@ ca22 = ca n+2
 1 -> sinon
 0 si pas remplie
 */
+CA2 = CA2.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA1 = CA1.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA = CA.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA11 = CA11.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA22 = CA22.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+
 var reg = new RegExp('^(-|)\[0-9]+$');
 
 if (reg.test(CA2) && reg.test(CA1) && reg.test(CA) && reg.test(CA11) && reg.test(CA22)){
@@ -406,6 +445,10 @@ index.sarl_fp = function (fp0,fp1,fp2){
 1 -> sinon
 0 -> non rempli
 */
+fp0 = fp0.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+fp1 = fp1.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+fp2 = fp2.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+
 var reg = new RegExp('^(-|)\[0-9]+$');
 if (reg.test(fp0) && reg.test(fp1) && reg.test(fp2)){
 		document.getElementById("obj-fp-control").innerHTML="";
@@ -483,6 +526,8 @@ index.sa_chiffreAffaireN= function (nombre){
 	2 -> >= 500k
 	3 -> >= 1M
 */
+nombre = nombre.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+
 var reg = new RegExp('^(-|)\[0-9]+$');
 if (reg.test(nombre)){
 	if (parseInt(nombre)<500000){
@@ -511,6 +556,12 @@ paramaetre entrée = ca22 = ca n+2
 -1 -> autre cas
 0 si pas remplie
 */
+CA2 = CA2.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA1 = CA1.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA = CA.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA11 = CA11.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA22 = CA22.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+
 var reg = new RegExp('^(-|)\[0-9]+$');
 
 if (reg.test(CA2) && reg.test(CA1) && reg.test(CA) && reg.test(CA11) && reg.test(CA22)){
@@ -541,6 +592,12 @@ ca22 = ca n+2
  -1 -> sinon
 0 si pas remplie
 */
+CA2 = CA2.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA1 = CA1.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA = CA.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA11 = CA11.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+CA22 = CA22.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+
 var reg = new RegExp('^(-|)\[0-9]+$');
 
 if (reg.test(CA2) && reg.test(CA1) && reg.test(CA) && reg.test(CA11) && reg.test(CA22)){
@@ -563,6 +620,7 @@ if (reg.test(CA2) && reg.test(CA1) && reg.test(CA) && reg.test(CA11) && reg.test
 
 };//fonction qui voit l'évolution du RN (similaire au dessus)
 index.sa_fp = function (fp0, fp1, fp2){
+
 /*
 	fonction qui prend en paramètre d'entrée le besoin de fond propre pour n, n+1, n+2 et retourne :
 	0 -> pas remplie
@@ -570,6 +628,10 @@ index.sa_fp = function (fp0, fp1, fp2){
 	2 ->  si Besoin FP n  +  n+1  +  n+2  > 1 000 000 €
 	3 ->  si Besoin FP n  +  n+1  +  n+2  < 1 000 000 € et si Besoin FP n  < 500 000 €
 */
+fp0 = fp0.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+fp1 = fp1.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+fp2 = fp2.replace(/[[\]{}()*+?.,\\^$|#\sa-zA-Z]/g,'');
+
 var reg = new RegExp('^(-|)\[0-9]+$');
 
 if (reg.test(fp0) && reg.test(fp1) && reg.test(fp2)){

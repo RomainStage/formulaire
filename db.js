@@ -42,37 +42,10 @@ MongoClient.connect('mongodb://romain:romain@kahana.mongohq.com:10004/ciib_stage
 	
     var collection = db.collection('test_insert');
 
-	
-    collection.insert(data, function(err, docs) {
-    if (err){//si il y a un doublon, on supprime le doc et on le crée
-    	collection.remove({email:data.email},function(err){
-    	if (err){//si erreur de suppression
-    		console.log("erreur de suppression : "+err);
-    		res.end(JSON.stringify({message: "ko"}));
-    	}
-    	else{ 
-			collection.insert(data,function(err){
-			if (err){//si erreur d'insertion
-				console.log('mis a jour erreur : '+err);
-				res.end(JSON.stringify({message: "ko"}));
-			}
-			else {
-			res.end(JSON.stringify({message: "ok"}));
-			console.log("MaJ ok");
-			}
-    		});
-    	}
-    	});
-    	
-   		res.end(JSON.stringify({message: "ko"}));
-    }else{
-        collection.count(function(err, count) {
-            console.log(format("count = %s", count));
-            res.end(JSON.stringify({message: "ok"}));
-            db.close();
-        });
-    }
-    });
+	collection.update({email:data.email},data, { upsert: true }, function(err){
+		if err throw err;
+	});
+    
 });
 };//pour insérer un élément pour le formulaire
 

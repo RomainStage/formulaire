@@ -37,13 +37,11 @@ MongoClient.connect('mongodb://romain:romain@kahana.mongohq.com:10004/ciib_stage
 exports.insert = function(data, res){//inserer le formulaire  
 MongoClient.connect('mongodb://romain:romain@kahana.mongohq.com:10004/ciib_stage', function(err, db) {
     if(err) throw err;
-	
-	
-	
     var collection = db.collection('test_insert');
 
 	collection.update({email:data.email},data, { upsert: true }, function(err){
-		if err throw err;
+		if (err) throw err;
+		db.close;
 	});
     
 });

@@ -157,7 +157,7 @@ Si le cookie existe
 if (c){
 MongoClient.connect('mongodb://romain:romain@kahana.mongohq.com:10004/ciib_stage', function(err, db) {
     if(err) throw err;
-    
+	console.log('okokokokokokokokokokokokokokok        =    '+c);
 	var collection = db.collection('cookie');
 	c = c.split("=");//car c ="cookieName=rom19282839" par excemple donc on eneleve le cookieName
 	 collection.find({cookie: c[1]}).toArray(function(err, results) {
@@ -166,8 +166,10 @@ MongoClient.connect('mongodb://romain:romain@kahana.mongohq.com:10004/ciib_stage
 	 	console.log(err);
 	 	obj[fct](false);	 
 	 }else if (results[0]){
+	 	
 	 	obj[fct](true);	 
 	 }else if (!results[0]){
+	 	
 	 	obj[fct](false);	 
 	 }
 	 

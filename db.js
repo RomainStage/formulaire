@@ -159,7 +159,8 @@ MongoClient.connect('mongodb://romain:romain@kahana.mongohq.com:10004/ciib_stage
     if(err) throw err;
 	console.log('okokokokokokokokokokokokokokok        =    '+c);
 	var collection = db.collection('cookie');
-	c = c.split("=");//car c ="cookieName=rom19282839" par excemple donc on eneleve le cookieName
+	c = c.split("cookieName=");//car c ="GA=iyiuyeuiyizeu ; cookieName=rom19282839" par excemple donc on eneleve le cookieName
+
 	 collection.find({cookie: c[1]}).toArray(function(err, results) {
 	
 	 if (err){
